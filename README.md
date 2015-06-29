@@ -1,6 +1,6 @@
 # Markalytics
 
-![Travis Build Status](https://travis-ci.org/markalytics/markalytics.svg)
+<a href="https://travis-ci.org/markalytics/markalytics"><img src="https://travis-ci.org/markalytics/markalytics.svg" alt="Travis build status"/></a>
 
 Markup-driven analytics.
 
