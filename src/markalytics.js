@@ -53,11 +53,11 @@ Markalytics.prototype.handleEvent = function (event) {
         return;
     }
 
-    this.sendBeacon(this.processAttributes(event));
+    this.sendHit(this.processAttributes(event));
 };
 
 Markalytics.prototype.processAttributes = function (event) {
-    var hitType, hitCallback, beaconData;
+    var hitType, hitCallback, hitData;
 
     if(event.target.hasAttribute('href') && event.type.toLowerCase() === 'click') {
         event.preventDefault();
@@ -80,7 +80,7 @@ Markalytics.prototype.processAttributes = function (event) {
 
     switch(hitType) {
         case 'event':
-            beaconData = {
+            hitData = {
                 hitType: 'event',
                 hitCallback: hitCallback,
                 eventCategory: event.target.getAttribute('data-category'),
@@ -90,21 +90,21 @@ Markalytics.prototype.processAttributes = function (event) {
             };
         break;
         case 'pageview':
-            beaconData = {
+            hitData = {
                 hitType: 'pageview',
                 hitCallback: hitCallback,
                 page: event.target.getAttribute('data-page')
             };
         break;
         default:
-            beaconData = {};
+            hitData = {};
         break;
     }
 
-    return beaconData;
+    return hitData;
 };
 
-Markalytics.prototype.sendBeacon = function (data, callback) {
+Markalytics.prototype.sendHit = function (data, callback) {
     callback = callback || function () {};
     data = data || {};
 
