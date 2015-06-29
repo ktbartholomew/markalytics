@@ -1,6 +1,8 @@
 # Markalytics
 
-Let your markup drive your analytics.
+![Travis Build Status](https://travis-ci.org/markalytics/markalytics.svg)
+
+Markup-driven analytics.
 
 Markalytics provides a declarative way to configure your Google Analytics events. With Markalytics, your _markup_ defines your events instead of having to maintain an unwieldy set of JavaScript event listeners or GTM tags.
 
