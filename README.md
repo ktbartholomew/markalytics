@@ -2,7 +2,7 @@
 
 Let your markup drive your analytics.
 
-Markalytics provides a declarative way to configure your Google Analytics events. With Markalytics, your _markup_ defines your events instead of having to maintain a wieldy set of JavaScript event listeners or GTM tags.
+Markalytics provides a declarative way to configure your Google Analytics events. With Markalytics, your _markup_ defines your events instead of having to maintain an unwieldy set of JavaScript event listeners or GTM tags.
 
 Markalytics lets you just do this:
 
@@ -10,12 +10,12 @@ Markalytics lets you just do this:
 <a href="/buy-now" data-ga-click="event" data-category="conversion-buy-now" data-label="homepage-button" data-action="click">Buy Now</a>
 ```
 
-Instead of _also_ having to do this:
+Instead of _also_ having to do all this:
 
 ```javascript
 $('#cumbersome-id-attribute').on('click', function (e) {
   e.preventDefault();
-  
+
   ga('send', 'event', {
     eventCategory: 'conversion-buy-now',
     eventLabel: 'homepage-button',
@@ -27,7 +27,7 @@ $('#cumbersome-id-attribute').on('click', function (e) {
 }
 ```
 
-In short, it lets you track your visitors’ interactions like crazy without having to do lots of work. It’s pretty great!
+In short, it lets you record events like crazy without having to do lots of work. It’s pretty great!
 
 ## Installation
 

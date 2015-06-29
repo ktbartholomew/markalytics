@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jasmine Spec Runner</title>
+        <link rel="shortcut icon" type="image/png" href="<%= temp %>/jasmine_favicon.png">
+        <% css.forEach(function(style){ %>
+          <link rel="stylesheet" type="text/css" href="<%= style %>">
+        <% }) %>
+        <style>
+            .test {
+                display: block;
+                float: left;
+                width: 20%;
+            }
+
+            .test input, .test h1 {
+                display: block;
+                margin: 20px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-MBPSQ5"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MBPSQ5');</script>
+        <!-- End Google Tag Manager -->
+        <section class="test">
+            <h1 id="click-test" data-ga-click="event" data-category="test-category" data-label="test-label" data-action="click">Click Me!</h1>
+        </section>
+        <section class="test">
+            <input id="blur-test" type="text" placeholder="Blur me!" data-ga-blur="event" data-category="test-category" data-label="test-label" data-action="blur">
+        </section>
+        <section class="test">
+            <input id="focus-test" type="text" placeholder="Focus me!" data-ga-focus="event" data-category="test-category" data-label="test-label" data-action="focus">
+        </section>
+        <section class="test">
+            <h1 id="mouseenter-test" data-ga-mouseenter="event" data-category="test-category" data-label="test-label" data-action="mouseenter">Mouseenter me!</h1>
+        </section>
+        <section class="test">
+            <h1 id="mouseleave-test" data-ga-mouseleave="event" data-category="test-category" data-label="test-label" data-action="mouseleave">Mouseleave me!</h1>
+        </section>
+        <% with (scripts) { %>
+          <% [].concat(polyfills, jasmine, boot, vendor, helpers, src, specs,reporters).forEach(function(script){ %>
+          <script src="<%= script %>"></script>
+          <% }) %>
+        <% }; %>
+        <script>
+            setTimeout(function () {
+                ga(function () {
+                    markalytics.configure({
+                        gaTrackerName: ga.getAll()[0].get('name')
+                    });
+                });
+            }, 500);
+        </script>
+    </body>
+</html>

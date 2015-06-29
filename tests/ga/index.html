@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jasmine Spec Runner</title>
+        <link rel="shortcut icon" type="image/png" href="<%= temp %>/jasmine_favicon.png">
+        <% css.forEach(function(style){ %>
+          <link rel="stylesheet" type="text/css" href="<%= style %>">
+        <% }) %>
+        <style>
+            .test {
+                display: block;
+                float: left;
+                width: 20%;
+            }
+
+            .test input, .test h1 {
+                display: block;
+                margin: 20px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="test">
+            <h1 id="click-test" data-ga-click="event" data-category="test-category" data-label="test-label" data-action="click">Click Me!</h1>
+        </section>
+        <section class="test">
+            <input id="blur-test" type="text" placeholder="Blur me!" data-ga-blur="event" data-category="test-category" data-label="test-label" data-action="blur">
+        </section>
+        <section class="test">
+            <input id="focus-test" type="text" placeholder="Focus me!" data-ga-focus="event" data-category="test-category" data-label="test-label" data-action="focus">
+        </section>
+        <section class="test">
+            <h1 id="mouseenter-test" data-ga-mouseenter="event" data-category="test-category" data-label="test-label" data-action="mouseenter">Mouseenter me!</h1>
+        </section>
+        <section class="test">
+            <h1 id="mouseleave-test" data-ga-mouseleave="event" data-category="test-category" data-label="test-label" data-action="mouseleave">Mouseleave me!</h1>
+        </section>
+        <% with (scripts) { %>
+          <% [].concat(polyfills, jasmine, boot, vendor, helpers, src, specs,reporters).forEach(function(script){ %>
+          <script src="<%= script %>"></script>
+          <% }) %>
+        <% }; %>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+        ga(function (tracker) {
+            debugger;
+        });
+
+          ga('create', 'UA-12345678-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
