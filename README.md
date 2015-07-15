@@ -118,7 +118,8 @@ Customize Markalytics by calling `markalytics.configure`:
 markalytics.configure({
   gaParent: window, // Where Google attaches the `ga` function by default.
   gaName: 'ga', // The name of the tracker function by default.
-  gaTrackerName: 't0' // The default name of the tracker. Could be different if you use named trackers or GTM.
+  gaTrackerName: 't0', // The default name of the tracker. Could be different if you use named trackers or GTM.
+  eventThrottle: 100 // If multiple events are fired in fewer than this many milliseconds, additional GA hits will not be sent.
 });
 ```
 

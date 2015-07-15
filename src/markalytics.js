@@ -27,7 +27,8 @@ var Markalytics = function () {
     this.options = {
         gaParent: window, // Google's default
         gaName: 'ga', // Google's default
-        gaTrackerName: 't0' // Google's default
+        gaTrackerName: 't0', // Google's default
+        eventThrottle: 100 // limit speed of multiple events on the same element
     };
 
     DOCUMENT_EVENTS.forEach((function (event, index, scope) {
@@ -53,7 +54,14 @@ Markalytics.prototype.handleEvent = function (event) {
         return;
     }
 
+    if(event.target.hasAttribute &&
+        new Date().getTime() - parseInt(event.target.getAttribute('data-throttle')) < this.options.eventThrottle
+    ) {
+        return;
+    }
+
     this.sendHit(this.processAttributes(event));
+    event.target.setAttribute('data-throttle', new Date().getTime());
 };
 
 Markalytics.prototype.processAttributes = function (event) {
@@ -117,6 +125,7 @@ Markalytics.prototype.sendHit = function (data, callback) {
 
     try {
         ga(sendCommand, data.hitType, data);
+
     }
     catch(e) {
         console.warn('[markalytics] Unable to send GA beacon. Has GA been loaded?');
